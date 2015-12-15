@@ -1,4 +1,4 @@
-//Team Peppy - Kyle Moon, Lucy Tang, Jordan Louie
+//Team Ghost Saturns - Kyle Moon, Lucy Tang, Jordan Louie
 //APCS1 - pd5
 //HW48--Halfling Time Trials
 //2015-12-14
@@ -150,10 +150,45 @@ public class OrderedArrayList {
 	*/
     }
 
+    public static long testLinear()
+    {
+	OrderedArrayList Franz = new OrderedArrayList();
+	long linearTimeBefore = System.currentTimeMillis();
+	
+	for( int i = 0; i < 10000; i++ ) {
+	    int valToAdd = (int)( 50 * Math.random() );
+	    Franz.addLinear( valToAdd );
+	}
+	
+	long linearTimeAfter = System.currentTimeMillis();
+	long linearTimeDifference = linearTimeAfter - linearTimeBefore;
+
+	return linearTimeDifference;
+    }
+
+    public static long testBinary()
+    {
+
+	OrderedArrayList Ghost = new OrderedArrayList();
+
+	long binaryTimeBefore = System.currentTimeMillis();
+	
+	for( int i = 0; i < 10000; i++ ) {
+	    int valToAdd = (int)( 50 * Math.random() );
+	    Ghost.addBinary( valToAdd );
+	}
+	
+	long binaryTimeAfter = System.currentTimeMillis();
+	long binaryTimeDifference = binaryTimeAfter - binaryTimeBefore;
+
+	return binaryTimeDifference;
+    }
+
 
     // main method solely for testing purposes
     public static void main( String[] args ) 
     {
+	/*
 	OrderedArrayList Franz = new OrderedArrayList();
 
 	System.out.println("\nPopulating Francz with 10,000 elements via addLinear...");
@@ -199,10 +234,27 @@ public class OrderedArrayList {
 	System.out.println(Franz);
 	System.out.println("findLin 5 " + Franz.findLin(5));
 	System.out.println("findBin 5 " + Franz.findBin(5));
+	*/
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	   INSERT WELL-COMMENT TIMING APPARATUS HERE
 	   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	System.out.println(testLinear());
+	System.out.println(testBinary());
+
+	OrderedArrayList binArray = new OrderedArrayList();
+        OrderedArrayList linArray = new OrderedArrayList();
+	
+	for (int i = 0; i < 30; i++)
+	{
+	    long binVal = testBinary();
+	    long linVal = testLinear();
+	    binArray.addBinary(binVal);
+	    linArray.addBinary(linVal);
+	}
+	System.out.println(binArray);
+	System.out.println(linArray);
+		
     }
 
 }//end class OrderedArrayList
