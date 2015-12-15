@@ -1,6 +1,7 @@
-
-
-
+//Team Peppy - Kyle Moon, Lucy Tang, Jordan Louie
+//APCS1 - pd5
+//HW48--Halfling Time Trials
+//2015-12-14
 
 /*============================================
   class OrderedArrayList
