@@ -239,8 +239,6 @@ public class OrderedArrayList {
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	   INSERT WELL-COMMENT TIMING APPARATUS HERE
 	   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	System.out.println(testLinear());
-	System.out.println(testBinary());
 
 	OrderedArrayList binArray = new OrderedArrayList();
         OrderedArrayList linArray = new OrderedArrayList();
@@ -251,8 +249,11 @@ public class OrderedArrayList {
 	    long linVal = testLinear();
 	    binArray.addBinary(binVal);
 	    linArray.addBinary(linVal);
+		;
 	}
+	System.out.println("\nTimings of 30 trials of addBinary:");
 	System.out.println(binArray);
+	System.out.println("\nTimings of 30 trials of addLinear:");
 	System.out.println(linArray);
 		
     }
