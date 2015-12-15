@@ -102,7 +102,7 @@ public class OrderedArrayList {
 	int ret = -1;
 	for (int i = 0; i< _data.size(); i++)
 	{
-	    if (_data.get(i).compareTo(target) >= 0)
+	    if (_data.get(i).compareTo(target) == 0)
 	    {
 		return i;
 	    }
@@ -132,6 +132,12 @@ public class OrderedArrayList {
 	    }
 	    med = (high + low) / 2;
 	}
+	if (this.get(med).compareTo(target) == 0)
+	    {
+		return med;
+	    }
+	return -1; 
+	/*
 	if (low <= high)
 	{
 	    return med;
@@ -140,6 +146,7 @@ public class OrderedArrayList {
 	{
 	    return low;
 	}
+	*/
     }
 
 
@@ -163,7 +170,7 @@ public class OrderedArrayList {
 
 	System.out.println("after population via addLinear(), Franz.size() = " + Franz.size());
 	//System.out.println( Franz );
-	System.out.println("Time allotted: " + linearTimeDifference);
+	System.out.println("Time allotted: " + linearTimeDifference + "ms");
 	System.out.println();
 
 	Franz = new OrderedArrayList();
@@ -172,7 +179,7 @@ public class OrderedArrayList {
 				
 	// testing binary search
 	long binaryTimeBefore = System.currentTimeMillis();
-	for( int i = 0; i < 10000; i++ ) {
+	for( int i = 0; i < 10; i++ ) {
 	    int valToAdd = (int)( 50 * Math.random() );
 	    //System.out.println( valToAdd );
 	    Franz.addBinary( valToAdd );
@@ -183,8 +190,14 @@ public class OrderedArrayList {
 
 	System.out.println("after population via addBinary(), Francz.size() = " + Franz.size());
 	//System.out.println( Franz );
-	System.out.println("Time allotted: " + binaryTimeDifference);
+	System.out.println("Time allotted: " + binaryTimeDifference + "ms");
 	System.out.println();
+
+	//TESTING FINDLIN AND FINDBIN
+        Franz.addBinary(5);
+	System.out.println(Franz);
+	System.out.println("findLin 5 " + Franz.findLin(5));
+	System.out.println("findBin 5 " + Franz.findBin(5));
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	   INSERT WELL-COMMENT TIMING APPARATUS HERE
