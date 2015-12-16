@@ -99,7 +99,6 @@ public class OrderedArrayList {
     // return index of occurrence or -1 if not found
     public int findLin( Comparable target )
     {
-	/* YOUR IMPLEMENTAITON AQUI */
 	int ret = -1;
 	for (int i = 0; i< _data.size(); i++)
 	{
@@ -138,19 +137,9 @@ public class OrderedArrayList {
 		return med;
 	    }
 	return -1; 
-	/*
-	if (low <= high)
-	{
-	    return med;
-	}
-	else
-	{
-	    return low;
-	}
-	*/
     }
-
-    public static long testLinear()
+    
+    public static long testAddLinear()
     {
 	OrderedArrayList Franz = new OrderedArrayList();
 	long linearTimeBefore = System.currentTimeMillis();
@@ -166,7 +155,7 @@ public class OrderedArrayList {
 	return linearTimeDifference;
     }
 
-    public static long testBinary()
+    public static long testAddBinary()
     {
 
 	OrderedArrayList Ghost = new OrderedArrayList();
@@ -184,6 +173,43 @@ public class OrderedArrayList {
 	return binaryTimeDifference;
     }
 
+    public static long testFindLinear()
+    {
+	OrderedArrayList Franz = new OrderedArrayList();
+	
+	for( int i = 0; i < 10000; i++ ) {
+	    int valToAdd = (int)( 50 * Math.random() );
+	    Franz.addLinear( valToAdd );
+	}
+
+	int valToFind = (int)(50*Math.random());
+	long linearTimeBefore = System.currentTimeMillis();
+	Franz.findLin(valToFind);
+	long linearTimeAfter = System.currentTimeMillis();
+	long linearTimeDifference = linearTimeAfter - linearTimeBefore;
+
+	return linearTimeDifference;
+    }
+
+    public static long testFindBinary()
+    {
+
+	OrderedArrayList Ghost = new OrderedArrayList();
+
+	for( int i = 0; i < 10000; i++ ) {
+	    int valToAdd = (int)( 50 * Math.random() );
+	    Ghost.addBinary( valToAdd );
+	}
+
+	int valToFind = (int)(50*Math.random());
+	long binaryTimeBefore = System.currentTimeMillis();
+	Ghost.findBin(valToFind);
+	long binaryTimeAfter = System.currentTimeMillis();
+	long binaryTimeDifference = binaryTimeAfter - binaryTimeBefore;
+
+	return binaryTimeDifference;
+    }
+    
 
     // main method solely for testing purposes
     public static void main( String[] args ) 
@@ -235,18 +261,19 @@ public class OrderedArrayList {
 	System.out.println("findLin 5 " + Franz.findLin(5));
 	System.out.println("findBin 5 " + Franz.findBin(5));
 	*/
+	
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	   INSERT WELL-COMMENT TIMING APPARATUS HERE
 	   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+	//for testing ADD
 	OrderedArrayList binArray = new OrderedArrayList();
         OrderedArrayList linArray = new OrderedArrayList();
 	
 	for (int i = 0; i < 30; i++)
 	{
-	    long binVal = testBinary();
-	    long linVal = testLinear();
+	    long binVal = testAddBinary();
+	    long linVal = testAddLinear();
 	    binArray.addBinary(binVal);
 	    linArray.addBinary(linVal);
 		;
@@ -255,6 +282,23 @@ public class OrderedArrayList {
 	System.out.println(binArray);
 	System.out.println("\nTimings of 30 trials of addLinear:");
 	System.out.println(linArray);
+
+	//for testing SEARCH
+	OrderedArrayList binArray2 = new OrderedArrayList();
+        OrderedArrayList linArray2 = new OrderedArrayList();
+	
+	for (int i = 0; i < 30; i++)
+	{
+	    long binVal = testFindBinary();
+	    long linVal = testFindLinear();
+	    binArray2.addBinary(binVal);
+	    linArray2.addBinary(linVal);
+		;
+	}
+	System.out.println("\nTimings of 30 trials of findBinary:");
+	System.out.println(binArray2);
+	System.out.println("\nTimings of 30 trials of findLinear:");
+	System.out.println(linArray2);
 		
     }
 
