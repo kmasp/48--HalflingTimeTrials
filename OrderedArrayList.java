@@ -182,9 +182,11 @@ public class OrderedArrayList {
 	    Franz.addLinear( valToAdd );
 	}
 
-	int valToFind = (int)(50*Math.random());
 	long linearTimeBefore = System.currentTimeMillis();
-	Franz.findLin(valToFind);
+	for (int i = 0; i < 10000; i++){
+	    int valToFind = (int)(50*Math.random());
+	    Franz.findLin(valToFind);
+	}
 	long linearTimeAfter = System.currentTimeMillis();
 	long linearTimeDifference = linearTimeAfter - linearTimeBefore;
 
@@ -201,9 +203,11 @@ public class OrderedArrayList {
 	    Ghost.addBinary( valToAdd );
 	}
 
-	int valToFind = (int)(50*Math.random());
 	long binaryTimeBefore = System.currentTimeMillis();
-	Ghost.findBin(valToFind);
+        for (int i = 0; i < 10000; i++){
+	    int valToFind = (int)(50*Math.random());
+	    Ghost.findBin(valToFind);
+	}
 	long binaryTimeAfter = System.currentTimeMillis();
 	long binaryTimeDifference = binaryTimeAfter - binaryTimeBefore;
 
@@ -266,6 +270,8 @@ public class OrderedArrayList {
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	   INSERT WELL-COMMENT TIMING APPARATUS HERE
 	   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/*
 	//for testing ADD
 	OrderedArrayList binArray = new OrderedArrayList();
         OrderedArrayList linArray = new OrderedArrayList();
@@ -282,6 +288,7 @@ public class OrderedArrayList {
 	System.out.println(binArray);
 	System.out.println("\nTimings of 30 trials of addLinear:");
 	System.out.println(linArray);
+	*/
 
 	//for testing SEARCH
 	OrderedArrayList binArray2 = new OrderedArrayList();
